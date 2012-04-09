@@ -6,7 +6,7 @@ public class UmejugRobot extends Robot {
 	@Override
 	public void run() {
 		while (true) {
-			ahead(100);
+			ahead(10);
 		}
 	}
 }
