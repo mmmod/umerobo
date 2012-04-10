@@ -25,9 +25,7 @@ public class SuperRobot extends Robot {
 				turnState = false;
 			} else {
 				ahead(1000*direction);
-				
-				fire(fireStart);
-				fireStart = fireStart - 0.3;
+
 			}
 		}
 	}
@@ -39,7 +37,9 @@ public class SuperRobot extends Robot {
 			turnState = true;
 			bearing = event.getBearingDegrees();
 		} else {
-			direction = direction * -1;
+			//back(10);
+			turnRight(90); //event.getBearingDegrees());
+			//direction = direction * -1;
 		}
 	}
 
