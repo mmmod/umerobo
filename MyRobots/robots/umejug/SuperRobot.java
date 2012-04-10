@@ -16,6 +16,7 @@ public class SuperRobot extends Robot {
 			if (hideState) {
 				ahead(50);
 			} else if (turnState) {
+				back(10);
 				turnLeft(bearing);
 				turnState = false;
 			} else {
