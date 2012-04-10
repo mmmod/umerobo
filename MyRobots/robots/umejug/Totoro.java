@@ -11,10 +11,10 @@ public class Totoro extends AdvancedRobot {
 	@Override
 	public void run() {
 		setColors(Color.DARK_GRAY, Color.GRAY, Color.WHITE);
-		setTurnRadarLeft(Double.POSITIVE_INFINITY);
-		setAdjustGunForRobotTurn(true);
-		setAdjustRadarForGunTurn(true);
-		setAdjustRadarForRobotTurn(true);
+//		setTurnRadarLeft(Double.POSITIVE_INFINITY);
+//		setAdjustGunForRobotTurn(true);
+//		setAdjustRadarForGunTurn(true);
+//		setAdjustRadarForRobotTurn(true);
 
 		Random random = new Random();
 		while (true) {
