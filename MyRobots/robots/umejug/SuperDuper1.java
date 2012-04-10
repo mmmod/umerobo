@@ -31,7 +31,7 @@ public class SuperDuper1 extends Robot
 		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
 		// Robot main loop
-		setColors(Color.CYAN, Color.pink, Color.black);
+		setColors(Color.cyan, Color.pink, Color.black);
 		while (true)
 		{
 			// Replace the next 4 lines with any behavior you would like
@@ -64,7 +64,7 @@ public class SuperDuper1 extends Robot
 			if (_distance > 100)
 			{
 				turnRight(_bearing - getHeading());
-				ahead(20);
+				ahead(_distance - 100);
 			}
 		}
 
