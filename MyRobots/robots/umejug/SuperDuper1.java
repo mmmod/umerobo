@@ -51,7 +51,7 @@ public class SuperDuper1 extends AdvancedRobot
 		if (_distance < 500  )
 		{
 			double gunHeading = getGunHeading();
-			//setTurnGunRight(  gunHeading-_bearing);
+			setTurnGunRight(  _bearing - gunHeading);
 			double gunError=Math.abs(getGunHeading() - _bearing);
 			if (gunError<3 && getGunHeat() == 0)
 			{
@@ -63,18 +63,18 @@ public class SuperDuper1 extends AdvancedRobot
 	private void movement()
 	{
 		double angle = 90;
-		if (_distance > 100)
+		if (_distance > 200)
 		{
-			angle = 20*_direction;
+			angle = 90-45*_direction;
 		}
-		else if (_distance > 70)
+		else if (_distance < 200)
 		{
-			angle = 80*_direction;
-		}
+			angle = 90;
+		}/*
 		else if(_distance <50)
 		{
 			angle = 110*_direction;
-		}
+		}*/
 		String str="B:"+_bearing+" H:"+getHeading();
 		System.out.println(str);
 		
