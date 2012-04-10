@@ -11,9 +11,11 @@ import robocode.ScannedRobotEvent;
 public class BadRobot extends Robot {
 	@Override
 	public void run() {
-		setColors(Color.ORANGE, Color.ORANGE, Color.BLACK);
+		setColors(Color.ORANGE, Color.ORANGE, Color.YELLOW);
 		while (true) {
-			ahead(500);
+			ahead(250);
+			turnRight(45);
+			ahead(250);
 			turnGunRight(360);
 		}
 	}
@@ -30,13 +32,12 @@ public class BadRobot extends Robot {
 	
 	@Override
 	public void onHitByBullet(HitByBulletEvent event) {
-		turnLeft(70);
-		ahead(100);
+//		turnRight(70);
+//		ahead(100);
 	}
 	
 	@Override
 	public void onHitRobot(HitRobotEvent event) {
-		turnRight(90);
-		ahead(100);
+		back(100);
 	}
 }
