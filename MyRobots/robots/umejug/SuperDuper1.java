@@ -10,13 +10,14 @@ import robocode.*;
 /**
  * SuperDuper1 - a robot by (your name here)
  */
-public class SuperDuper1 extends Robot
+public class SuperDuper1 extends AdvancedRobot
 {
 	private double	_bearing		= 0;
 	private boolean	_enemyDetected	= false;
 	private int		_radarDirection	= 1;
 	private double	_distance;
 	private String	_trackedName;
+	private int	_direction=1;
 
 	/**
 	 * run: SuperDuper1's default behavior
@@ -31,6 +32,7 @@ public class SuperDuper1 extends Robot
 		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
 		// Robot main loop
+		setAdjustGunForRobotTurn(true);
 		setColors(Color.cyan, Color.pink, Color.black);
 		while (true)
 		{
@@ -39,46 +41,56 @@ public class SuperDuper1 extends Robot
 			radar();
 			movement();
 			gun();
-			_enemyDetected = false;
+			execute();
 
 		}
 	}
 
 	private void gun()
 	{
-		if (_enemyDetected)
+		if (_distance < 500  )
 		{
-			if(_distance<300 && getGunHeat()==0)
+			double gunHeading = getGunHeading();
+			setTurnGunRight(  _bearing - gunHeading);
+			double gunError=Math.abs(getGunHeading() - _bearing);
+			if (gunError<3 && getGunHeat() == 0)
 			{
-				double gunHeading=getGunHeading();
-				turnGunRight(_bearing-gunHeading);
-				fire(Math.min(300 / _distance, 3));
+				setFire(Math.min(500 / _distance, 3));
 			}
 		}
 	}
 
 	private void movement()
 	{
-		if (_enemyDetected)
+		double angle = 90;
+		if (_distance > 200)
 		{
-			if (_distance > 100)
-			{
-				turnRight(_bearing - getHeading());
-				ahead(_distance - 100);
-			}
+			angle = 90-45*_direction;
 		}
-
+		else if (_distance < 200)
+		{
+			angle = 90;
+		}/*
+		else if(_distance <50)
+		{
+			angle = 110*_direction;
+		}*/
+		String str="B:"+_bearing+" H:"+getHeading();
+		System.out.println(str);
+		
+		setTurnRight(_bearing - getHeading()-angle);
+		setAhead(20*_direction);
 	}
 
 	private void radar()
 	{
 		if (_radarDirection > 0)
 		{
-			turnRadarLeft(45);
+			setTurnRadarLeft(45);
 		}
 		else
 		{
-			turnRadarRight(45);
+			setTurnRadarRight(45);
 		}
 	}
 
@@ -89,7 +101,7 @@ public class SuperDuper1 extends Robot
 	{
 		// Replace the next line with any behavior you would like
 
-		if (e.getName().equals(_trackedName) || _trackedName == null || e.getDistance()<_distance)
+		if (e.getName().equals(_trackedName) || _trackedName == null || e.getDistance() < _distance)
 		{
 			_trackedName = e.getName();
 			_distance = e.getDistance();
@@ -114,7 +126,7 @@ public class SuperDuper1 extends Robot
 	public void onHitByBullet(HitByBulletEvent e)
 	{
 		// Replace the next line with any behavior you would like
-		//back(10);
+		// back(10);
 	}
 
 	/**
@@ -123,6 +135,13 @@ public class SuperDuper1 extends Robot
 	public void onHitWall(HitWallEvent e)
 	{
 		// Replace the next line with any behavior you would like
-		//back(20);
+		// back(20);
+		_direction*=-1;
+	}
+	@Override
+	public void onHitRobot(HitRobotEvent event)
+	{
+		// TODO Auto-generated method stub
+		_direction*=-1;
 	}
 }
