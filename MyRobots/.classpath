@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="robots"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="libs/robocode.jar"/>
+	<classpathentry kind="lib" path="libs/robocode.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/home/hoglet/projects/umerobo/MyRobots/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="robots"/>
 </classpath>
