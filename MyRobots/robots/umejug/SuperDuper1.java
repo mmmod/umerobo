@@ -51,9 +51,9 @@ public class SuperDuper1 extends AdvancedRobot
 		if (_distance < 500  )
 		{
 			double gunHeading = getGunHeading();
-			setTurnGunRight(  _bearing - gunHeading);
-			double gunError=Math.abs(getGunHeading() - _bearing);
-			if (gunError<3 && getGunHeat() == 0)
+			setTurnGunRight( getHeading() + gunHeading -_bearing);
+			double gunError=Math.abs(getHeading() + getGunHeading() - _bearing);
+			if (gunError<10 && getGunHeat() == 0)
 			{
 				setFire(Math.min(500 / _distance, 3));
 			}
