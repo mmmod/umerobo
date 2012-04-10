@@ -1,5 +1,7 @@
 package umejug;
 
+import java.awt.Color;
+
 import robocode.HitByBulletEvent;
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
@@ -9,6 +11,7 @@ import robocode.ScannedRobotEvent;
 public class BadRobot extends Robot {
 	@Override
 	public void run() {
+		setColors(Color.ORANGE, Color.ORANGE, Color.BLACK);
 		while (true) {
 			ahead(500);
 			turnGunRight(360);
