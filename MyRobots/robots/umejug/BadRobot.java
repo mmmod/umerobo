@@ -20,21 +20,23 @@ public class BadRobot extends Robot {
 	
 	@Override
 	public void onScannedRobot(ScannedRobotEvent event) {
-		fire(2);
+		fire(3);
 	}
 	
 	@Override
 	public void onHitWall(HitWallEvent event) {
-		turnRight(90);
+		turnRight(70);
 	}
 	
 	@Override
 	public void onHitByBullet(HitByBulletEvent event) {
+		turnLeft(70);
 		ahead(100);
 	}
 	
 	@Override
 	public void onHitRobot(HitRobotEvent event) {
-		super.onHitRobot(event);
+		turnRight(90);
+		ahead(100);
 	}
 }
