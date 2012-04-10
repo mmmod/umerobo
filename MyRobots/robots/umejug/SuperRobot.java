@@ -1,5 +1,7 @@
 package umejug;
 
+import java.awt.Color;
+
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
 import robocode.Robot;
@@ -15,6 +17,7 @@ public class SuperRobot extends Robot {
 	@Override
 	public void run() {
 		super.run();
+		setColors(Color.PINK, Color.ORANGE, Color.PINK);
 		turnRight(getHeading() % 90); //event.getBearingDegrees());
 		while (true) {
 			if (hideState) {
