@@ -1,6 +1,7 @@
 package umejug;
 
 import robocode.AdvancedRobot;
+import robocode.HitRobotEvent;
 import robocode.Robot;
 import robocode.ScannedRobotEvent;
 
@@ -46,5 +47,14 @@ public class TheKiller extends AdvancedRobot {
 			gunRotation = 360;
 		}
 
+	}
+
+	@Override
+	public void onHitRobot(HitRobotEvent event) {
+		turnGunRight(event.getBearing() - getGunHeading());
+		for (int i = 0; i < 10; i++) {
+			fire(0.3);
+			back(20);
+		}
 	}
 }
