@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="MyRobots/compilers"/>
 	<classpathentry kind="src" path="MyRobots/robots"/>
 	<classpathentry kind="lib" path="MyRobots/libs/codesize-1.1.jar"/>
 	<classpathentry kind="lib" path="MyRobots/libs/picocontainer-2.8.jar"/>
