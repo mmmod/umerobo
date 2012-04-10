@@ -2,8 +2,6 @@ package umejug;
 
 import java.awt.Color;
 
-import org.GNOME.Accessibility._TableStub;
-
 import robocode.*;
 //import java.awt.Color;
 
@@ -33,7 +31,7 @@ public class SuperDuper1 extends Robot
 		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
 		// Robot main loop
-		setColors(Color.CYAN, Color.pink, Color.black);
+		setColors(Color.cyan, Color.pink, Color.black);
 		while (true)
 		{
 			// Replace the next 4 lines with any behavior you would like
@@ -50,7 +48,12 @@ public class SuperDuper1 extends Robot
 	{
 		if (_enemyDetected)
 		{
-			fire(Math.min(300 / _distance, 3));
+			if(_distance<300 && getGunHeat()==0)
+			{
+				double gunHeading=getGunHeading();
+				turnGunRight(_bearing-gunHeading);
+				fire(Math.min(300 / _distance, 3));
+			}
 		}
 	}
 
@@ -58,10 +61,10 @@ public class SuperDuper1 extends Robot
 	{
 		if (_enemyDetected)
 		{
-			turnRight(_bearing - getHeading());
 			if (_distance > 100)
 			{
-				ahead(20);
+				turnRight(_bearing - getHeading());
+				ahead(_distance - 100);
 			}
 		}
 
@@ -86,7 +89,7 @@ public class SuperDuper1 extends Robot
 	{
 		// Replace the next line with any behavior you would like
 
-		if (e.getName().equals(_trackedName) || _trackedName == null)
+		if (e.getName().equals(_trackedName) || _trackedName == null || e.getDistance()<_distance)
 		{
 			_trackedName = e.getName();
 			_distance = e.getDistance();
