@@ -13,5 +13,5 @@
 	<classpathentry kind="lib" path="MyRobots/libs/robocode.ui.editor-1.7.3.5.jar"/>
 	<classpathentry kind="lib" path="MyRobots/libs/roborumble.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="MyRobots/robots"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
