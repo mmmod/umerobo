@@ -2,7 +2,6 @@ package umejug;
 
 import robocode.AdvancedRobot;
 import robocode.HitRobotEvent;
-import robocode.Robot;
 import robocode.ScannedRobotEvent;
 
 public class TheKiller extends AdvancedRobot {
@@ -51,9 +50,10 @@ public class TheKiller extends AdvancedRobot {
 
 	@Override
 	public void onHitRobot(HitRobotEvent event) {
-		turnGunRight(event.getBearing() - getGunHeading());
-		for (int i = 0; i < 10; i++) {
-			fire(0.3);
+		targetBearing = -targetBearing;
+		turnGunRight(event.getBearing());
+		for (int i = 0; i < 3; i++) {
+			fire(1);
 			back(20);
 		}
 	}
